@@ -1,0 +1,448 @@
+﻿<Page x:Class="WpfApp3.Bezopita"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp3"
+      mc:Ignorable="d" 
+       d:DesignWidth="800"
+      Title="Bezopita">
+    <Page.Resources>
+        <Style x:Key="buttonstyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="mybord" BorderThickness="0" Background="#FF5865F1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="mybord" Value="#FF4859FF">
+
+                                </Setter>
+                                <Setter Property="Cursor" Value="Hand"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="mybord" Value="#FF0016FF"></Setter>
+
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+        <Style x:Key="buttonstyle1" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="mybord" BorderThickness="0" Background="GhostWhite">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="mybord" Value="GhostWhite">
+
+                                </Setter>
+                                <Setter Property="Cursor" Value="Hand"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="mybord" Value="GhostWhite"></Setter>
+
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+        <Style x:Key="textbxstyle" TargetType="TextBox">
+            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="BorderBrush" Value="Gray"></Setter>
+            <Setter Property="FontSize" Value="13"></Setter>
+            <Setter Property="FontFamily" Value="/WpfApp3;component/Fonts/#Roboto Medium"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Padding" Value="10,5,10,5"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid x:Name="gro" SnapsToDevicePixels="True" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                            <Border x:Name="Background" BorderThickness="1" CornerRadius="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
+
+                            </Border>
+                            <ScrollViewer x:Name="PART_ContentHost" BorderThickness="0" IsTabStop="False" Background="{x:Null}" Padding="{TemplateBinding Padding}" TextElement.Foreground="{TemplateBinding Foreground}"  ></ScrollViewer>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </Page.Resources>
+    <Grid Background="GhostWhite">
+
+        <StackPanel HorizontalAlignment="Left" Margin="0,0,0,0"  Width="800"  >
+            <StackPanel HorizontalAlignment="Right" Margin="0,10,115,0">
+                
+            
+            <TextBlock Height="55" x:Name="kakoyopit" TextWrapping="Wrap" Margin="5,0,0,0" Width="345" FontSize="14" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"><Run Text="80% работодателей не рассматривают кандидатов"/><Run Text=" "/><LineBreak/><Run Text="без"/><Run Text=" опыта работы. Рекомендуем указать опыт или"/><LineBreak/><Run Text="объяснить почему его нет"/><Run Text="."/></TextBlock>
+            <TextBox x:Name="popit" Style="{StaticResource textbxstyle}" TextWrapping="Wrap" Width="345" AcceptsReturn="True" Text="" Height="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Margin="5,0,0,0">
+                
+            </TextBox>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left">
+                <TextBlock Text="Специальность" Margin="0,20,0,0" FontSize="30" FontFamily="/WpfApp3;component/Fonts/#Roboto Black"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0"  HorizontalAlignment="Right">
+                    <TextBlock Text="Желаемая должность" VerticalAlignment="Center" Margin="0,0,-8,0" FontSize="24" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                    <TextBox x:Name="jelaemaya" Text="" Style="{StaticResource textbxstyle}" FontSize="20" Width="345" Height="40" Margin="98,0,0,0"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left">
+                
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0"  HorizontalAlignment="Right">
+                    <TextBlock x:Name="nado" Text="Зарплата" VerticalAlignment="Center" Margin="0,0,-8,0" FontSize="24" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                    <TextBox MaxLength="11" x:Name="zarplata" Text="" Style="{StaticResource textbxstyle}" FontSize="20" Width="150" Height="40" Margin="244,0,0,0" PreviewTextInput="zarplata_PreviewTextInput"></TextBox>
+                    <ComboBox x:Name="valyta" Margin="10,0,0,0" FontSize="18" VerticalContentAlignment="Center" SelectedIndex="0" HorizontalContentAlignment="Center" Width="70" SelectionChanged="valyta_SelectionChanged">
+                        <TextBlock>руб.</TextBlock>
+                        <TextBlock>EUR</TextBlock>
+                        <TextBlock>USD</TextBlock>
+                    </ComboBox>
+                    <TextBlock Text="на руки"  VerticalAlignment="Center" Margin="5,0,0,0" FontSize="15" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left">
+                <TextBlock Text="Образование" Margin="0,20,0,0" FontSize="30" FontFamily="/WpfApp3;component/Fonts/#Roboto Black"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0"  HorizontalAlignment="Right">
+                    <TextBlock Text="Уровень"  VerticalAlignment="Center" Margin="0,0,-8,0" FontSize="24" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                    <ComboBox x:Name="obracmb" FontSize="20" Width="250"  Margin="259,0,0,0" SelectionChanged="obracmb_SelectionChanged" >
+                        <TextBlock Text="Среднее" ></TextBlock>
+                        <TextBlock>Среднее специальное</TextBlock>
+                        <TextBlock>Не оконченное высшее</TextBlock>
+                        <TextBlock>Высшее</TextBlock>
+                        <TextBlock>Бакалавр</TextBlock>
+                        <TextBlock>Магистр</TextBlock>
+                        <TextBlock>Кандидат наук</TextBlock>
+                        <TextBlock>Доктор наук</TextBlock>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+            <Frame x:Name="obrazurovframe"></Frame>
+            <StackPanel HorizontalAlignment="Left">
+                <TextBlock Text="Владение языками" Margin="0,20,0,0" FontSize="30" FontFamily="/WpfApp3;component/Fonts/#Roboto Black"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0"  HorizontalAlignment="Left">
+                    <TextBlock  Text="Родной язык" VerticalAlignment="Center" Margin="0,0,-8,0" FontSize="24" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                    <ComboBox x:Name="rodnoucmb" FontSize="20" Width="200"  Margin="207,0,0,0" SelectionChanged="rodnoucmb_SelectionChanged"  >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0"  HorizontalAlignment="Left">
+                    <TextBlock Text="Иностранные языки"  VerticalAlignment="Top" Margin="0,0,-8,0" FontSize="24" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock  x:Name="eshe1" Margin="123,5,0,0">
+                       <Hyperlink   FontSize="14" Click="Hyperlink_Click_1">Указать еще один язык</Hyperlink>
+                    </TextBlock>
+                        <StackPanel Visibility="Collapsed" x:Name="inolang1" Orientation="Horizontal" Margin="0,0,0,0" HorizontalAlignment="Left">
+                            <ComboBox VerticalContentAlignment="Center" x:Name="inolangcmb1" FontSize="16" Width="150"  Margin="122,0,0,0" SelectionChanged="inolangcmb1_SelectionChanged" >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <ComboBox x:Name="lvlLang1" VerticalContentAlignment="Center" FontSize="16" Width="150"  >
+                                <TextBlock Text="A1—Начальный"></TextBlock>
+                                <TextBlock Text="A2—Элементарный"></TextBlock>
+                                <TextBlock Text="B1—Средний"></TextBlock>
+                                <TextBlock Text="B2—Средне-продвинутый"></TextBlock>
+                                <TextBlock Text="C1—Продвинутый"></TextBlock>
+                                <TextBlock Text="C2—В совешенстве"></TextBlock>
+                            </ComboBox>
+                            <Button x:Name="crest1" Style="{StaticResource buttonstyle1}" Content="X" Foreground="Gray" FontSize="24" Margin="5,-1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"  ></Button>
+                        </StackPanel>
+                        <StackPanel Visibility="Collapsed" x:Name="eshe2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,0">
+                            <TextBlock Margin="123,0,0,0">
+                       <Hyperlink   FontSize="14" Click="Hyperlink_Click_2">Указать еще один язык</Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Visibility="Collapsed" x:Name="inolang2" Orientation="Horizontal" Margin="0,15,0,0" HorizontalAlignment="Left">
+                            <ComboBox  VerticalContentAlignment="Center" x:Name="inolangcmb2"  FontSize="16" Width="150"  Margin="122,0,0,0" SelectionChanged="inolangcmb2_SelectionChanged" >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <ComboBox x:Name="lvlLang2" VerticalContentAlignment="Center"  FontSize="16" Width="150"  >
+                                <TextBlock Text="A1—Начальный"></TextBlock>
+                                <TextBlock Text="A2—Элементарный"></TextBlock>
+                                <TextBlock Text="B1—Средний"></TextBlock>
+                                <TextBlock Text="B2—Средне-продвинутый"></TextBlock>
+                                <TextBlock Text="C1—Продвинутый"></TextBlock>
+                                <TextBlock Text="C2—В совешенстве"></TextBlock>
+                            </ComboBox>
+                            <Button x:Name="crest2" Style="{StaticResource buttonstyle1}" Content="X" Foreground="Gray" FontSize="24" Margin="5,-1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_1"  ></Button>
+                        </StackPanel>
+                        <StackPanel Visibility="Collapsed" x:Name="eshe3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,0">
+                            <TextBlock Margin="123,0,0,0">
+                       <Hyperlink   FontSize="14" Click="Hyperlink_Click_3">Указать еще один язык</Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Visibility="Collapsed" x:Name="inolang3" Orientation="Horizontal" Margin="0,15,0,0" HorizontalAlignment="Left">
+                            <ComboBox VerticalContentAlignment="Center" x:Name="inolangcmb3"  FontSize="16" Width="150"  Margin="122,0,0,0" SelectionChanged="inolangcmb3_SelectionChanged" >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <ComboBox x:Name="lvlLang3" VerticalContentAlignment="Center" FontSize="16" Width="150"  >
+                                <TextBlock Text="A1—Начальный"></TextBlock>
+                                <TextBlock Text="A2—Элементарный"></TextBlock>
+                                <TextBlock Text="B1—Средний"></TextBlock>
+                                <TextBlock Text="B2—Средне-продвинутый"></TextBlock>
+                                <TextBlock Text="C1—Продвинутый"></TextBlock>
+                                <TextBlock Text="C2—В совешенстве"></TextBlock>
+                            </ComboBox>
+                            <Button x:Name="crest3" Style="{StaticResource buttonstyle1}" Content="X" Foreground="Gray" FontSize="24" Margin="5,-1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_2"  ></Button>
+                        </StackPanel>
+                        <StackPanel Visibility="Collapsed" x:Name="eshe4" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,0">
+                            <TextBlock Margin="123,0,0,0">
+                       <Hyperlink   FontSize="14" Click="Hyperlink_Click_4">Указать еще один язык</Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Visibility="Collapsed" x:Name="inolang4" Orientation="Horizontal" Margin="0,15,0,0" HorizontalAlignment="Left">
+                            <ComboBox VerticalContentAlignment="Center" x:Name="inolangcmb4" FontSize="16" Width="150"  Margin="122,0,0,0" SelectionChanged="inolangcmb4_SelectionChanged" >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <ComboBox x:Name="lvlLang4" VerticalContentAlignment="Center" FontSize="16" Width="150"  >
+                                <TextBlock Text="A1—Начальный"></TextBlock>
+                                <TextBlock Text="A2—Элементарный"></TextBlock>
+                                <TextBlock Text="B1—Средний"></TextBlock>
+                                <TextBlock Text="B2—Средне-продвинутый"></TextBlock>
+                                <TextBlock Text="C1—Продвинутый"></TextBlock>
+                                <TextBlock Text="C2—В совешенстве"></TextBlock>
+                            </ComboBox>
+                            <Button x:Name="crest4" Style="{StaticResource buttonstyle1}" Content="X" Foreground="Gray" FontSize="24" Margin="5,-1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_3"  ></Button>
+                        </StackPanel>
+                        <StackPanel Visibility="Collapsed" x:Name="eshe5" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,0">
+                            <TextBlock Margin="123,0,0,0">
+                       <Hyperlink   FontSize="14" Click="Hyperlink_Click_5">Указать еще один язык</Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Visibility="Collapsed" x:Name="inolang5" Orientation="Horizontal" Margin="0,15,0,0" HorizontalAlignment="Left">
+                            <ComboBox VerticalContentAlignment="Center" x:Name="inolangcmb5" FontSize="16" Width="150"  Margin="122,0,0,0" SelectionChanged="inolangcmb5_SelectionChanged" >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <ComboBox x:Name="lvlLang5" VerticalContentAlignment="Center" FontSize="16" Width="150"  >
+                                <TextBlock Text="A1—Начальный"></TextBlock>
+                                <TextBlock Text="A2—Элементарный"></TextBlock>
+                                <TextBlock Text="B1—Средний"></TextBlock>
+                                <TextBlock Text="B2—Средне-продвинутый"></TextBlock>
+                                <TextBlock Text="C1—Продвинутый"></TextBlock>
+                                <TextBlock Text="C2—В совешенстве"></TextBlock>
+                            </ComboBox>
+                            <Button x:Name="crest5" Style="{StaticResource buttonstyle1}" Content="X" Foreground="Gray" FontSize="24" Margin="5,-1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_4"  ></Button>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <TextBlock Text="Другая информация" Margin="0,20,0,0" FontSize="30" FontFamily="/WpfApp3;component/Fonts/#Roboto Black"></TextBlock>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="0,20,0,0" Orientation="Horizontal">
+                    <TextBlock Text="О себе" Margin="0,0,0,0" FontSize="24" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                    <StackPanel Orientation="Vertical" Margin="272,0,0,0">
+                        <TextBox x:Name="omne" Style="{StaticResource textbxstyle}"  TextWrapping="Wrap" Width="345" AcceptsReturn="True" Height="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Margin="5,0,0,0">
+
+                        </TextBox>
+
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="0,20,0,0" Orientation="Horizontal">
+                    <TextBlock Text="Переезд" Margin="0,0,0,0" FontSize="24" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                    <StackPanel Orientation="Vertical" Margin="257,0,0,0">
+                        <StackPanel Orientation="Horizontal"   HorizontalAlignment="Left">
+                            <Viewbox Height="20" Margin="0,0,0,0">
+                                <RadioButton GroupName="pereezd" Margin="0,0,4,0" Checked="RadioButton_Checked"  ></RadioButton>
+                            </Viewbox>
+                            <TextBlock Text="Невозможен" VerticalAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Left">
+                            <Viewbox Height="20" Margin="0,0,0,0">
+                                <RadioButton GroupName="pereezd" Margin="0,0,4,0" Checked="RadioButton_Checked_1"  ></RadioButton>
+                            </Viewbox>
+                            <TextBlock Text="Возможен" VerticalAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                        </StackPanel>
+
+                    </StackPanel>
+                    
+
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="0,20,0,0" Orientation="Horizontal">
+                    <TextBlock Text="Занятость" Margin="0,0,0,0" FontSize="24" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                    <StackPanel Orientation="Vertical" Margin="239,0,0,0">
+                        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left">
+                            <Viewbox Height="20" Margin="0,0,0,0">
+                                <CheckBox Margin="0,0,4,0" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"></CheckBox>
+                            </Viewbox>
+                            <TextBlock Text="Полная занятость" VerticalAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Left">
+                            <Viewbox Height="20" Margin="0,0,0,0">
+                                <CheckBox Margin="0,0,4,0" Checked="CheckBox_Checked_1" Unchecked="CheckBox_Unchecked_1"></CheckBox>
+                            </Viewbox>
+                            <TextBlock Text="Частичная занятость" VerticalAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Left">
+                            <Viewbox Height="20" Margin="0,0,0,0">
+                                <CheckBox Margin="0,0,4,0" Checked="CheckBox_Checked_2" Unchecked="CheckBox_Unchecked_2"></CheckBox>
+                            </Viewbox>
+                            <TextBlock Text="Проектная работа" VerticalAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Left">
+                            <Viewbox Height="20" Margin="0,0,0,0">
+                                <CheckBox Margin="0,0,4,0" Checked="CheckBox_Checked_3" Unchecked="CheckBox_Unchecked_3"></CheckBox>
+                            </Viewbox>
+                            <TextBlock Text="Волонтерство" VerticalAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Left">
+                            <Viewbox Height="20" Margin="0,0,0,0">
+                                <CheckBox Margin="0,0,4,0" Checked="CheckBox_Checked_4" Unchecked="CheckBox_Unchecked_4"></CheckBox>
+                            </Viewbox>
+                            <TextBlock Text="Стажировка" VerticalAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                        </StackPanel>
+
+
+                    </StackPanel>
+
+
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="0,20,0,0" Orientation="Horizontal">
+                    <TextBlock Text="График работы" Margin="0,0,0,0" FontSize="24" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                    <StackPanel Orientation="Vertical" Margin="184,0,0,0">
+                        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left">
+                            <Viewbox Height="20" Margin="0,0,0,0">
+                                <CheckBox Margin="0,0,4,0" Checked="CheckBox_Checked_5" Unchecked="CheckBox_Unchecked_5"/>
+                            </Viewbox>
+                            <TextBlock Text="Полный день" VerticalAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Left">
+                            <Viewbox Height="20" Margin="0,0,0,0">
+                                <CheckBox Margin="0,0,4,0" Checked="CheckBox_Checked_6" Unchecked="CheckBox_Unchecked_6"/>
+                            </Viewbox>
+                            <TextBlock Text="Сменный график" VerticalAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Left">
+                            <Viewbox Height="20" Margin="0,0,0,0">
+                                <CheckBox Margin="0,0,4,0" Checked="CheckBox_Checked_7" Unchecked="CheckBox_Unchecked_7"/>
+                            </Viewbox>
+                            <TextBlock Text="Гибкий график" VerticalAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Left">
+                            <Viewbox Height="20" Margin="0,0,0,0">
+                                <CheckBox Margin="0,0,4,0" Checked="CheckBox_Checked_8" Unchecked="CheckBox_Unchecked_8"/>
+                            </Viewbox>
+                            <TextBlock Text = "Удаленная работа" VerticalAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Left">
+                            <Viewbox Height="20" Margin="0,0,0,0">
+                                <CheckBox Margin="0,0,4,0" Checked="CheckBox_Checked_9" Unchecked="CheckBox_Unchecked_9"/>
+                            </Viewbox>
+                            <TextBlock Text="Вахтовый метод" VerticalAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                        </StackPanel>
+
+
+                    </StackPanel>
+
+
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="0,20,0,0" Orientation="Horizontal">
+                    <TextBlock Text="Наличие автомобиля" Margin="0,0,0,0" FontSize="24" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                    <StackPanel Orientation="Vertical" Margin="116,5,0,0">
+                        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left">
+                            <Viewbox Height="20" Margin="0,0,0,0">
+                                <CheckBox Margin="0,0,4,0" Checked="CheckBox_Checked_10" Unchecked="CheckBox_Unchecked_10"/>
+                            </Viewbox>
+                            <TextBlock Text="Есть личный автомобиль" VerticalAlignment="Center" FontSize="16" Margin="0,0,0,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                        </StackPanel>
+                        
+
+
+                    </StackPanel>
+
+
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="0,20,0,0" Orientation="Horizontal">
+                    <TextBlock Text="Категория прав" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="24" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"></TextBlock>
+                    <StackPanel Orientation="Horizontal" Margin="183,5,0,0" >
+                        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="-2,0,0,0" >
+                            <ListBox x:Name="prava" Background="GhostWhite" SelectionMode="Multiple" BorderThickness="0" FontSize="18" >
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="Margin" Value="0"/>
+                                        
+                                        <!-- For setting height of control-->
+                                        
+                                        <!-- For setting widthof control-->
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate >
+                                        <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBoxItem Background="LightGray" >A</ListBoxItem>
+                                <ListBoxItem Background="LightGray">B</ListBoxItem>
+                                <ListBoxItem Background="LightGray">C</ListBoxItem>
+                                <ListBoxItem Background="LightGray">D</ListBoxItem>
+                                <ListBoxItem Background="LightGray">E</ListBoxItem>
+                                <ListBoxItem Background="LightGray">BE</ListBoxItem>
+                                <ListBoxItem Background="LightGray">CE</ListBoxItem>
+                                <ListBoxItem Background="LightGray">DE</ListBoxItem>
+                                <ListBoxItem Background="LightGray">Tm</ListBoxItem>
+                                <ListBoxItem Background="LightGray">Tb</ListBoxItem>
+                            </ListBox>
+                        </StackPanel>
+
+
+
+                    </StackPanel>
+
+                    
+                </StackPanel>
+                <Button Height="40" Width="190"  Foreground="White" Content="Сохранить и опубликовать" Margin="210,20,0,0"  Style="{StaticResource buttonstyle}" Click="Button_Click_5" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" FontSize="14"></Button>
+                <TextBlock Visibility="Hidden"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+       
+      
+    </Grid>
+</Page>

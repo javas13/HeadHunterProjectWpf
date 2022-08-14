@@ -1,0 +1,816 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище findjobModel" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="channel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="unemployer_id" Type="int" />
+          <Property Name="employer_id" Type="int" />
+          <Property Name="is_created" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="education">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="educational_institution" Type="varchar" MaxLength="100" />
+          <Property Name="faculty" Type="varchar" MaxLength="45" />
+          <Property Name="specialization" Type="varchar" MaxLength="45" />
+          <Property Name="year_of_end" Type="varchar" MaxLength="15" />
+          <Property Name="rezume_id" Type="int" />
+        </EntityType>
+        <EntityType Name="employer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="45" />
+          <Property Name="lastname" Type="varchar" MaxLength="45" />
+          <Property Name="date_of_birth" Type="date" />
+          <Property Name="login" Type="varchar" MaxLength="45" />
+          <Property Name="password" Type="varchar" MaxLength="45" />
+          <Property Name="email" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="favorites_for_employer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employer_id" Type="int" />
+          <Property Name="rezume_id" Type="int" />
+        </EntityType>
+        <EntityType Name="favorites_for_unemployed">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="unemployed_id" Type="int" />
+          <Property Name="vacancy_id" Type="int" />
+        </EntityType>
+        <EntityType Name="inolanguages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+          <Property Name="lvl" Type="varchar" MaxLength="45" />
+          <Property Name="rezume_id" Type="int" />
+        </EntityType>
+        <EntityType Name="message">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="message" Type="varchar" MaxLength="255" />
+          <Property Name="time_of_send" Type="datetime" Precision="0" />
+          <Property Name="sender_name" Type="varchar" MaxLength="45" />
+          <Property Name="channel_id" Type="int" />
+        </EntityType>
+        <EntityType Name="rezume">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="phone_number" Type="varchar" MaxLength="15" />
+          <Property Name="city" Type="varchar" MaxLength="45" />
+          <Property Name="citizenship" Type="varchar" MaxLength="100" />
+          <Property Name="experience_job" Type="varchar" MaxLength="45" />
+          <Property Name="WhyNot" Type="varchar" MaxLength="200" />
+          <Property Name="career_objective" Type="varchar" MaxLength="45" />
+          <Property Name="salary" Type="int" />
+          <Property Name="currency" Type="varchar" MaxLength="10" />
+          <Property Name="education_lvl" Type="varchar" MaxLength="45" />
+          <Property Name="native_language" Type="varchar" MaxLength="45" />
+          <Property Name="about_myself" Type="varchar" MaxLength="200" />
+          <Property Name="moving" Type="varchar" MaxLength="20" />
+          <Property Name="busyness" Type="varchar" MaxLength="100" />
+          <Property Name="schedule" Type="varchar" MaxLength="100" />
+          <Property Name="is_have_car" Type="varchar" MaxLength="45" />
+          <Property Name="category_of_rights" Type="varchar" MaxLength="70" />
+          <Property Name="datetime_of_public" Type="datetime" Precision="0" />
+          <Property Name="unemployed_id" Type="int" />
+          <Property Name="gender" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="unemployed">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="45" />
+          <Property Name="lastname" Type="varchar" MaxLength="45" />
+          <Property Name="date_of_birth" Type="date" />
+          <Property Name="login" Type="varchar" MaxLength="45" />
+          <Property Name="password" Type="varchar" MaxLength="45" />
+          <Property Name="email" Type="varchar" MaxLength="45" />
+          <Property Name="age" Type="int" />
+        </EntityType>
+        <EntityType Name="vacancy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="300" />
+          <Property Name="salary" Type="int" />
+          <Property Name="city" Type="varchar" MaxLength="45" />
+          <Property Name="address" Type="varchar" MaxLength="100" />
+          <Property Name="type_of_employment" Type="varchar" MaxLength="45" />
+          <Property Name="schedule" Type="varchar" MaxLength="45" />
+          <Property Name="public_time" Type="datetime" Precision="0" />
+          <Property Name="employer_id" Type="int" />
+          <Property Name="currency" Type="varchar" MaxLength="10" />
+          <Property Name="from_or_to" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <Association Name="channel_id">
+          <End Role="channel" Type="Self.channel" Multiplicity="0..1" />
+          <End Role="message" Type="Self.message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="channel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="message">
+              <PropertyRef Name="channel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="empl1_id">
+          <End Role="employer" Type="Self.employer" Multiplicity="0..1" />
+          <End Role="channel" Type="Self.channel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="channel">
+              <PropertyRef Name="unemployer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="employer_id">
+          <End Role="employer" Type="Self.employer" Multiplicity="0..1" />
+          <End Role="favorites_for_employer" Type="Self.favorites_for_employer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="favorites_for_employer">
+              <PropertyRef Name="employer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="employer_id2">
+          <End Role="employer" Type="Self.employer" Multiplicity="0..1" />
+          <End Role="vacancy" Type="Self.vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vacancy">
+              <PropertyRef Name="employer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rez_id">
+          <End Role="rezume" Type="Self.rezume" Multiplicity="0..1" />
+          <End Role="education" Type="Self.education" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rezume">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="education">
+              <PropertyRef Name="rezume_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rezumde_id">
+          <End Role="rezume" Type="Self.rezume" Multiplicity="0..1" />
+          <End Role="favorites_for_employer" Type="Self.favorites_for_employer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rezume">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="favorites_for_employer">
+              <PropertyRef Name="rezume_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rezume_id">
+          <End Role="rezume" Type="Self.rezume" Multiplicity="0..1" />
+          <End Role="inolanguages" Type="Self.inolanguages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rezume">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inolanguages">
+              <PropertyRef Name="rezume_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="unemp1l_id">
+          <End Role="unemployed" Type="Self.unemployed" Multiplicity="0..1" />
+          <End Role="channel" Type="Self.channel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unemployed">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="channel">
+              <PropertyRef Name="unemployer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="unempl3_id">
+          <End Role="unemployed" Type="Self.unemployed" Multiplicity="0..1" />
+          <End Role="favorites_for_unemployed" Type="Self.favorites_for_unemployed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unemployed">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="favorites_for_unemployed">
+              <PropertyRef Name="unemployed_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="unemployed_id">
+          <End Role="unemployed" Type="Self.unemployed" Multiplicity="0..1" />
+          <End Role="rezume" Type="Self.rezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unemployed">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rezume">
+              <PropertyRef Name="unemployed_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="vacancy_id3">
+          <End Role="vacancy" Type="Self.vacancy" Multiplicity="0..1" />
+          <End Role="favorites_for_unemployed" Type="Self.favorites_for_unemployed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacancy">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="favorites_for_unemployed">
+              <PropertyRef Name="vacancy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище findjobModelContainer">
+          <EntitySet Name="channel" EntityType="Self.channel" Schema="" store:Type="Tables" />
+          <EntitySet Name="education" EntityType="Self.education" Schema="" store:Type="Tables" />
+          <EntitySet Name="employer" EntityType="Self.employer" Schema="" store:Type="Tables" />
+          <EntitySet Name="favorites_for_employer" EntityType="Self.favorites_for_employer" Schema="" store:Type="Tables" />
+          <EntitySet Name="favorites_for_unemployed" EntityType="Self.favorites_for_unemployed" Schema="" store:Type="Tables" />
+          <EntitySet Name="inolanguages" EntityType="Self.inolanguages" Schema="" store:Type="Tables" />
+          <EntitySet Name="message" EntityType="Self.message" Schema="" store:Type="Tables" />
+          <EntitySet Name="rezume" EntityType="Self.rezume" Schema="" store:Type="Tables" />
+          <EntitySet Name="unemployed" EntityType="Self.unemployed" Schema="" store:Type="Tables" />
+          <EntitySet Name="vacancy" EntityType="Self.vacancy" Schema="" store:Type="Tables" />
+          <AssociationSet Name="channel_id" Association="Self.channel_id">
+            <End Role="channel" EntitySet="channel" />
+            <End Role="message" EntitySet="message" />
+          </AssociationSet>
+          <AssociationSet Name="empl1_id" Association="Self.empl1_id">
+            <End Role="employer" EntitySet="employer" />
+            <End Role="channel" EntitySet="channel" />
+          </AssociationSet>
+          <AssociationSet Name="employer_id" Association="Self.employer_id">
+            <End Role="employer" EntitySet="employer" />
+            <End Role="favorites_for_employer" EntitySet="favorites_for_employer" />
+          </AssociationSet>
+          <AssociationSet Name="employer_id2" Association="Self.employer_id2">
+            <End Role="employer" EntitySet="employer" />
+            <End Role="vacancy" EntitySet="vacancy" />
+          </AssociationSet>
+          <AssociationSet Name="rez_id" Association="Self.rez_id">
+            <End Role="rezume" EntitySet="rezume" />
+            <End Role="education" EntitySet="education" />
+          </AssociationSet>
+          <AssociationSet Name="rezumde_id" Association="Self.rezumde_id">
+            <End Role="rezume" EntitySet="rezume" />
+            <End Role="favorites_for_employer" EntitySet="favorites_for_employer" />
+          </AssociationSet>
+          <AssociationSet Name="rezume_id" Association="Self.rezume_id">
+            <End Role="rezume" EntitySet="rezume" />
+            <End Role="inolanguages" EntitySet="inolanguages" />
+          </AssociationSet>
+          <AssociationSet Name="unemp1l_id" Association="Self.unemp1l_id">
+            <End Role="unemployed" EntitySet="unemployed" />
+            <End Role="channel" EntitySet="channel" />
+          </AssociationSet>
+          <AssociationSet Name="unempl3_id" Association="Self.unempl3_id">
+            <End Role="unemployed" EntitySet="unemployed" />
+            <End Role="favorites_for_unemployed" EntitySet="favorites_for_unemployed" />
+          </AssociationSet>
+          <AssociationSet Name="unemployed_id" Association="Self.unemployed_id">
+            <End Role="unemployed" EntitySet="unemployed" />
+            <End Role="rezume" EntitySet="rezume" />
+          </AssociationSet>
+          <AssociationSet Name="vacancy_id3" Association="Self.vacancy_id3">
+            <End Role="vacancy" EntitySet="vacancy" />
+            <End Role="favorites_for_unemployed" EntitySet="favorites_for_unemployed" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="findjobModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="channel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unemployer_id" Type="Int32" />
+          <Property Name="employer_id" Type="Int32" />
+          <Property Name="is_created" Type="SByte" />
+          <NavigationProperty Name="messages" Relationship="Self.channel_id" FromRole="channel" ToRole="message" />
+          <NavigationProperty Name="employer" Relationship="Self.empl1_id" FromRole="channel" ToRole="employer" />
+          <NavigationProperty Name="unemployed" Relationship="Self.unemp1l_id" FromRole="channel" ToRole="unemployed" />
+        </EntityType>
+        <EntityType Name="education">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="educational_institution" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="faculty" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="specialization" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="year_of_end" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="rezume_id" Type="Int32" />
+          <NavigationProperty Name="rezume" Relationship="Self.rez_id" FromRole="education" ToRole="rezume" />
+        </EntityType>
+        <EntityType Name="employer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="date_of_birth" Type="DateTime" />
+          <Property Name="login" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="channels" Relationship="Self.empl1_id" FromRole="employer" ToRole="channel" />
+          <NavigationProperty Name="favorites_for_employer" Relationship="Self.employer_id" FromRole="employer" ToRole="favorites_for_employer" />
+          <NavigationProperty Name="vacancies" Relationship="Self.employer_id2" FromRole="employer" ToRole="vacancy" />
+        </EntityType>
+        <EntityType Name="favorites_for_employer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employer_id" Type="Int32" />
+          <Property Name="rezume_id" Type="Int32" />
+          <NavigationProperty Name="employer" Relationship="Self.employer_id" FromRole="favorites_for_employer" ToRole="employer" />
+          <NavigationProperty Name="rezume" Relationship="Self.rezumde_id" FromRole="favorites_for_employer" ToRole="rezume" />
+        </EntityType>
+        <EntityType Name="favorites_for_unemployed">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unemployed_id" Type="Int32" />
+          <Property Name="vacancy_id" Type="Int32" />
+          <NavigationProperty Name="unemployed" Relationship="Self.unempl3_id" FromRole="favorites_for_unemployed" ToRole="unemployed" />
+          <NavigationProperty Name="vacancy" Relationship="Self.vacancy_id3" FromRole="favorites_for_unemployed" ToRole="vacancy" />
+        </EntityType>
+        <EntityType Name="inolanguage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="lvl" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="rezume_id" Type="Int32" />
+          <NavigationProperty Name="rezume" Relationship="Self.rezume_id" FromRole="inolanguages" ToRole="rezume" />
+        </EntityType>
+        <EntityType Name="message">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="message1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="time_of_send" Type="DateTime" />
+          <Property Name="sender_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="channel_id" Type="Int32" />
+          <NavigationProperty Name="channel" Relationship="Self.channel_id" FromRole="message" ToRole="channel" />
+        </EntityType>
+        <EntityType Name="rezume">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="citizenship" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="experience_job" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="WhyNot" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="career_objective" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="Int32" />
+          <Property Name="currency" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="education_lvl" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="native_language" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="about_myself" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="moving" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="busyness" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="schedule" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="is_have_car" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="category_of_rights" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="datetime_of_public" Type="DateTime" />
+          <Property Name="unemployed_id" Type="Int32" />
+          <Property Name="gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="educations" Relationship="Self.rez_id" FromRole="rezume" ToRole="education" />
+          <NavigationProperty Name="favorites_for_employer" Relationship="Self.rezumde_id" FromRole="rezume" ToRole="favorites_for_employer" />
+          <NavigationProperty Name="inolanguages" Relationship="Self.rezume_id" FromRole="rezume" ToRole="inolanguages" />
+          <NavigationProperty Name="unemployed" Relationship="Self.unemployed_id" FromRole="rezume" ToRole="unemployed" />
+        </EntityType>
+        <EntityType Name="unemployed">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="date_of_birth" Type="DateTime" />
+          <Property Name="login" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="age" Type="Int32" />
+          <NavigationProperty Name="channels" Relationship="Self.unemp1l_id" FromRole="unemployed" ToRole="channel" />
+          <NavigationProperty Name="favorites_for_unemployed" Relationship="Self.unempl3_id" FromRole="unemployed" ToRole="favorites_for_unemployed" />
+          <NavigationProperty Name="rezumes" Relationship="Self.unemployed_id" FromRole="unemployed" ToRole="rezume" />
+        </EntityType>
+        <EntityType Name="vacancy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="Int32" />
+          <Property Name="city" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="type_of_employment" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="schedule" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="public_time" Type="DateTime" />
+          <Property Name="employer_id" Type="Int32" />
+          <Property Name="currency" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="from_or_to" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="employer" Relationship="Self.employer_id2" FromRole="vacancy" ToRole="employer" />
+          <NavigationProperty Name="favorites_for_unemployed" Relationship="Self.vacancy_id3" FromRole="vacancy" ToRole="favorites_for_unemployed" />
+        </EntityType>
+        <Association Name="channel_id">
+          <End Role="channel" Type="Self.channel" Multiplicity="0..1" />
+          <End Role="message" Type="Self.message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="channel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="message">
+              <PropertyRef Name="channel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="empl1_id">
+          <End Role="employer" Type="Self.employer" Multiplicity="0..1" />
+          <End Role="channel" Type="Self.channel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="channel">
+              <PropertyRef Name="unemployer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="unemp1l_id">
+          <End Role="unemployed" Type="Self.unemployed" Multiplicity="0..1" />
+          <End Role="channel" Type="Self.channel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unemployed">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="channel">
+              <PropertyRef Name="unemployer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rez_id">
+          <End Role="rezume" Type="Self.rezume" Multiplicity="0..1" />
+          <End Role="education" Type="Self.education" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rezume">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="education">
+              <PropertyRef Name="rezume_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="employer_id">
+          <End Role="employer" Type="Self.employer" Multiplicity="0..1" />
+          <End Role="favorites_for_employer" Type="Self.favorites_for_employer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="favorites_for_employer">
+              <PropertyRef Name="employer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="employer_id2">
+          <End Role="employer" Type="Self.employer" Multiplicity="0..1" />
+          <End Role="vacancy" Type="Self.vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vacancy">
+              <PropertyRef Name="employer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rezumde_id">
+          <End Role="rezume" Type="Self.rezume" Multiplicity="0..1" />
+          <End Role="favorites_for_employer" Type="Self.favorites_for_employer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rezume">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="favorites_for_employer">
+              <PropertyRef Name="rezume_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="unempl3_id">
+          <End Role="unemployed" Type="Self.unemployed" Multiplicity="0..1" />
+          <End Role="favorites_for_unemployed" Type="Self.favorites_for_unemployed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unemployed">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="favorites_for_unemployed">
+              <PropertyRef Name="unemployed_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="vacancy_id3">
+          <End Role="vacancy" Type="Self.vacancy" Multiplicity="0..1" />
+          <End Role="favorites_for_unemployed" Type="Self.favorites_for_unemployed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacancy">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="favorites_for_unemployed">
+              <PropertyRef Name="vacancy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rezume_id">
+          <End Role="rezume" Type="Self.rezume" Multiplicity="0..1" />
+          <End Role="inolanguages" Type="Self.inolanguage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rezume">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inolanguages">
+              <PropertyRef Name="rezume_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="unemployed_id">
+          <End Role="unemployed" Type="Self.unemployed" Multiplicity="0..1" />
+          <End Role="rezume" Type="Self.rezume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unemployed">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rezume">
+              <PropertyRef Name="unemployed_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="findjobEntities19" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="channels" EntityType="Self.channel" />
+          <EntitySet Name="educations" EntityType="Self.education" />
+          <EntitySet Name="employers" EntityType="Self.employer" />
+          <EntitySet Name="favorites_for_employer" EntityType="Self.favorites_for_employer" />
+          <EntitySet Name="favorites_for_unemployed" EntityType="Self.favorites_for_unemployed" />
+          <EntitySet Name="inolanguages" EntityType="Self.inolanguage" />
+          <EntitySet Name="messages" EntityType="Self.message" />
+          <EntitySet Name="rezumes" EntityType="Self.rezume" />
+          <EntitySet Name="unemployeds" EntityType="Self.unemployed" />
+          <EntitySet Name="vacancies" EntityType="Self.vacancy" />
+          <AssociationSet Name="channel_id" Association="Self.channel_id">
+            <End Role="channel" EntitySet="channels" />
+            <End Role="message" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="empl1_id" Association="Self.empl1_id">
+            <End Role="employer" EntitySet="employers" />
+            <End Role="channel" EntitySet="channels" />
+          </AssociationSet>
+          <AssociationSet Name="unemp1l_id" Association="Self.unemp1l_id">
+            <End Role="unemployed" EntitySet="unemployeds" />
+            <End Role="channel" EntitySet="channels" />
+          </AssociationSet>
+          <AssociationSet Name="rez_id" Association="Self.rez_id">
+            <End Role="rezume" EntitySet="rezumes" />
+            <End Role="education" EntitySet="educations" />
+          </AssociationSet>
+          <AssociationSet Name="employer_id" Association="Self.employer_id">
+            <End Role="employer" EntitySet="employers" />
+            <End Role="favorites_for_employer" EntitySet="favorites_for_employer" />
+          </AssociationSet>
+          <AssociationSet Name="employer_id2" Association="Self.employer_id2">
+            <End Role="employer" EntitySet="employers" />
+            <End Role="vacancy" EntitySet="vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="rezumde_id" Association="Self.rezumde_id">
+            <End Role="rezume" EntitySet="rezumes" />
+            <End Role="favorites_for_employer" EntitySet="favorites_for_employer" />
+          </AssociationSet>
+          <AssociationSet Name="unempl3_id" Association="Self.unempl3_id">
+            <End Role="unemployed" EntitySet="unemployeds" />
+            <End Role="favorites_for_unemployed" EntitySet="favorites_for_unemployed" />
+          </AssociationSet>
+          <AssociationSet Name="vacancy_id3" Association="Self.vacancy_id3">
+            <End Role="vacancy" EntitySet="vacancies" />
+            <End Role="favorites_for_unemployed" EntitySet="favorites_for_unemployed" />
+          </AssociationSet>
+          <AssociationSet Name="rezume_id" Association="Self.rezume_id">
+            <End Role="rezume" EntitySet="rezumes" />
+            <End Role="inolanguages" EntitySet="inolanguages" />
+          </AssociationSet>
+          <AssociationSet Name="unemployed_id" Association="Self.unemployed_id">
+            <End Role="unemployed" EntitySet="unemployeds" />
+            <End Role="rezume" EntitySet="rezumes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище findjobModelContainer" CdmEntityContainer="findjobEntities19">
+          <EntitySetMapping Name="channels">
+            <EntityTypeMapping TypeName="findjobModel.channel">
+              <MappingFragment StoreEntitySet="channel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="unemployer_id" ColumnName="unemployer_id" />
+                <ScalarProperty Name="employer_id" ColumnName="employer_id" />
+                <ScalarProperty Name="is_created" ColumnName="is_created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="educations">
+            <EntityTypeMapping TypeName="findjobModel.education">
+              <MappingFragment StoreEntitySet="education">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="educational_institution" ColumnName="educational_institution" />
+                <ScalarProperty Name="faculty" ColumnName="faculty" />
+                <ScalarProperty Name="specialization" ColumnName="specialization" />
+                <ScalarProperty Name="year_of_end" ColumnName="year_of_end" />
+                <ScalarProperty Name="rezume_id" ColumnName="rezume_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employers">
+            <EntityTypeMapping TypeName="findjobModel.employer">
+              <MappingFragment StoreEntitySet="employer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="favorites_for_employer">
+            <EntityTypeMapping TypeName="findjobModel.favorites_for_employer">
+              <MappingFragment StoreEntitySet="favorites_for_employer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="employer_id" ColumnName="employer_id" />
+                <ScalarProperty Name="rezume_id" ColumnName="rezume_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="favorites_for_unemployed">
+            <EntityTypeMapping TypeName="findjobModel.favorites_for_unemployed">
+              <MappingFragment StoreEntitySet="favorites_for_unemployed">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="unemployed_id" ColumnName="unemployed_id" />
+                <ScalarProperty Name="vacancy_id" ColumnName="vacancy_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inolanguages">
+            <EntityTypeMapping TypeName="findjobModel.inolanguage">
+              <MappingFragment StoreEntitySet="inolanguages">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="lvl" ColumnName="lvl" />
+                <ScalarProperty Name="rezume_id" ColumnName="rezume_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="messages">
+            <EntityTypeMapping TypeName="findjobModel.message">
+              <MappingFragment StoreEntitySet="message">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="message1" ColumnName="message" />
+                <ScalarProperty Name="time_of_send" ColumnName="time_of_send" />
+                <ScalarProperty Name="sender_name" ColumnName="sender_name" />
+                <ScalarProperty Name="channel_id" ColumnName="channel_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rezumes">
+            <EntityTypeMapping TypeName="findjobModel.rezume">
+              <MappingFragment StoreEntitySet="rezume">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="citizenship" ColumnName="citizenship" />
+                <ScalarProperty Name="experience_job" ColumnName="experience_job" />
+                <ScalarProperty Name="WhyNot" ColumnName="WhyNot" />
+                <ScalarProperty Name="career_objective" ColumnName="career_objective" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="education_lvl" ColumnName="education_lvl" />
+                <ScalarProperty Name="native_language" ColumnName="native_language" />
+                <ScalarProperty Name="about_myself" ColumnName="about_myself" />
+                <ScalarProperty Name="moving" ColumnName="moving" />
+                <ScalarProperty Name="busyness" ColumnName="busyness" />
+                <ScalarProperty Name="schedule" ColumnName="schedule" />
+                <ScalarProperty Name="is_have_car" ColumnName="is_have_car" />
+                <ScalarProperty Name="category_of_rights" ColumnName="category_of_rights" />
+                <ScalarProperty Name="datetime_of_public" ColumnName="datetime_of_public" />
+                <ScalarProperty Name="unemployed_id" ColumnName="unemployed_id" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unemployeds">
+            <EntityTypeMapping TypeName="findjobModel.unemployed">
+              <MappingFragment StoreEntitySet="unemployed">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="age" ColumnName="age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vacancies">
+            <EntityTypeMapping TypeName="findjobModel.vacancy">
+              <MappingFragment StoreEntitySet="vacancy">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="type_of_employment" ColumnName="type_of_employment" />
+                <ScalarProperty Name="schedule" ColumnName="schedule" />
+                <ScalarProperty Name="public_time" ColumnName="public_time" />
+                <ScalarProperty Name="employer_id" ColumnName="employer_id" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="from_or_to" ColumnName="from_or_to" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

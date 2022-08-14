@@ -1,0 +1,128 @@
+﻿<Page x:Class="WpfApp3.HomelessRegistration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp3"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1300"
+      Title="HomelessRegistration">
+
+    <Page.Resources>
+        <Style x:Key="buttonstyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="mybord" BorderThickness="0" Background="#FF5865F1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="mybord" Value="#FF4859FF">
+
+                                </Setter>
+                                <Setter Property="Cursor" Value="Hand"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="mybord" Value="#FF0016FF"></Setter>
+
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+        
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Image Margin="-344,-185,-276,-195" Source="142352-predprinimatel-chinovnik-belye_vorotnichki-predstavitel-kostyum-1920x1080.jpg" Stretch="Fill"/>
+        <Grid Height="500" Width="1100">
+
+
+            <Border CornerRadius="10" Height="500" Width="1100" Background="LightBlue">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Регистрация" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Width="246" FontFamily="/WpfApp3;component/Fonts/#Roboto Black"  Grid.ColumnSpan="2"  />
+                    <StackPanel Orientation="Vertical" Grid.Row="2">
+
+                        <TextBlock Text="Имя" FontSize="22" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" Margin="62,50,30,5"></TextBlock>
+                        <Border BorderBrush="Gray" x:Name="nameborder" CornerRadius="5" Height="40" Width="400" BorderThickness="4" HorizontalAlignment="Center" Margin="-30,0,0,0" MouseEnter="nameborder_MouseEnter" MouseLeave="nameborder_MouseLeave">
+                            <TextBox BorderThickness="0" Text="" Name="nametextbox" VerticalContentAlignment="Center" FontSize="20" Background="LightCyan" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" MouseEnter="nametextbox_MouseEnter" MouseLeave="nametextbox_MouseLeave" PreviewTextInput="nametextbox_PreviewTextInput" PreviewKeyDown="nametextbox_PreviewKeyDown"/>
+                        </Border>
+
+                        <TextBlock Text="Фамилия" FontSize="22" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" Margin="62,15,0,5"></TextBlock>
+                        <Border BorderBrush="Gray" HorizontalAlignment="Center" Margin="-30,0,0,0" x:Name="familyborder" CornerRadius="5" Height="40" Width="400" BorderThickness="4" MouseEnter="familyborder_MouseEnter" MouseLeave="familyborder_MouseLeave">
+                            <TextBox BorderThickness="0" x:Name="familytextbox"  VerticalContentAlignment="Center" FontSize="20" Background="LightCyan" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" MouseEnter="familytextbox_MouseEnter" MouseLeave="familytextbox_MouseLeave" PreviewTextInput="familytextbox_PreviewTextInput" PreviewKeyDown="familytextbox_PreviewKeyDown"/>
+                        </Border>
+                        <TextBlock Text="Дата рождения" FontSize="22" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" Margin="62,15,0,5"></TextBlock>
+                        
+                        <Border BorderBrush="Gray" Background="LightCyan" HorizontalAlignment="Center" Margin="-30,0,0,0" x:Name="ageboddrder" CornerRadius="5" Height="40" Width="400" BorderThickness="4" MouseEnter="ageboddrder_MouseEnter" MouseLeave="ageboddrder_MouseLeave" >
+                            <Grid>
+
+
+                                <TextBox IsReadOnly="True" Text="{Binding ElementName=datepic, Path=SelectedDate, StringFormat='{}{0:dd.MM.yyyy}'}" BorderThickness="0" x:Name="datarojd"  VerticalContentAlignment="Center" FontSize="20" Background="LightCyan" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" MouseEnter="datarojd_MouseEnter" MouseLeave="datarojd_MouseLeave"/>
+                                <DatePicker Name="datepic" DisplayDateStart="12.31.1935"  FontSize="24" BorderThickness="0" DisplayDateEnd="12.31.2005" Margin="395,-2,-33,-2"/>
+                            </Grid>
+                        </Border>
+                        <Button  x:Name="loginbutton" Height="50" Content="Продолжить"  Margin="397,30,-147,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" FontSize="24" Foreground="White" Click="loginbutton_Click" >
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+
+
+                                </Style>
+
+
+                            </Button.Resources>
+
+                            <Button.Style>
+                                <StaticResource ResourceKey="buttonstyle"/>
+                            </Button.Style>
+
+                        </Button>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="424,0,-104,0" Width="230" >
+                            <TextBlock Text="Есть аккаунт? " FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" Opacity="0.6" HorizontalAlignment="Center" Margin="60,0,0,0" VerticalAlignment="Center" ></TextBlock>
+                            <TextBlock HorizontalAlignment="Center" Margin="0,0,42,0" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" >
+                    <Hyperlink NavigateUri="login.xaml">Войти</Hyperlink>
+                            </TextBlock>
+                            
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Width="100" Margin="15,0,0,0" Style="{StaticResource ResourceKey=buttonstyle}"></Button>
+                            
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <TextBlock Text="Логин" FontSize="22" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium"  Margin="85,50,30,5"></TextBlock>
+                        <Border BorderBrush="Gray" x:Name="loginborder" CornerRadius="5" Height="40" Width="400" BorderThickness="4" HorizontalAlignment="Center" Margin="20,0,0,0" MouseEnter="loginborder_MouseEnter" MouseLeave="loginborder_MouseLeave">
+                            <TextBox BorderThickness="0" Text="" Name="logintextbox" VerticalContentAlignment="Center" FontSize="20" Background="LightCyan" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" MouseEnter="logintextbox_MouseEnter" MouseLeave="logintextbox_MouseLeave"/>
+                        </Border>
+
+                        <TextBlock Text="Пароль" FontSize="22" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" Margin="85,15,0,5"></TextBlock>
+                        <Border BorderBrush="Gray" HorizontalAlignment="Center" Margin="20,0,0,0"  x:Name="passwordborder" CornerRadius="5" Height="40" Width="400" BorderThickness="4" MouseEnter="passwordborder_MouseEnter" MouseLeave="passwordborder_MouseLeave">
+                            <TextBox BorderThickness="0" x:Name="passwordtextbox"  VerticalContentAlignment="Center" FontSize="20" Background="LightCyan" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" MouseEnter="passwordtextbox_MouseEnter" MouseLeave="passwordtextbox_MouseLeave"/>
+                        </Border>
+                        <TextBlock Text="Электронная почта" FontSize="22" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" Margin="85,15,0,5"></TextBlock>
+                        <Border BorderBrush="Gray" HorizontalAlignment="Center" Margin="20,0,0,0" x:Name="mailborder" CornerRadius="5" Height="40" Width="400" BorderThickness="4" MouseEnter="mailborder_MouseEnter_1" MouseLeave="mailborder_MouseLeave_1">
+                            <TextBox BorderThickness="0" x:Name="mailtextbox"  VerticalContentAlignment="Center" FontSize="20" Background="LightCyan" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" MouseEnter="mailtextbox_MouseEnter" MouseLeave="mailtextbox_MouseLeave"/>
+                        </Border>
+                        <Rectangle Height="2" Fill="Red" Width="390" Margin="22,1,0,0" Name="mailrectangle" Opacity="0"></Rectangle>
+
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+        </Grid>
+
+    </Grid>
+</Page>

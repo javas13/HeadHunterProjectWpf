@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище findjobModelContainer" CdmEntityContainer="findjobEntities19">
+    <EntitySetMapping Name="channels">
+      <EntityTypeMapping TypeName="findjobModel.channel">
+        <MappingFragment StoreEntitySet="channel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="unemployer_id" ColumnName="unemployer_id" />
+          <ScalarProperty Name="employer_id" ColumnName="employer_id" />
+          <ScalarProperty Name="is_created" ColumnName="is_created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="educations">
+      <EntityTypeMapping TypeName="findjobModel.education">
+        <MappingFragment StoreEntitySet="education">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="educational_institution" ColumnName="educational_institution" />
+          <ScalarProperty Name="faculty" ColumnName="faculty" />
+          <ScalarProperty Name="specialization" ColumnName="specialization" />
+          <ScalarProperty Name="year_of_end" ColumnName="year_of_end" />
+          <ScalarProperty Name="rezume_id" ColumnName="rezume_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employers">
+      <EntityTypeMapping TypeName="findjobModel.employer">
+        <MappingFragment StoreEntitySet="employer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="favorites_for_employer">
+      <EntityTypeMapping TypeName="findjobModel.favorites_for_employer">
+        <MappingFragment StoreEntitySet="favorites_for_employer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="employer_id" ColumnName="employer_id" />
+          <ScalarProperty Name="rezume_id" ColumnName="rezume_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="favorites_for_unemployed">
+      <EntityTypeMapping TypeName="findjobModel.favorites_for_unemployed">
+        <MappingFragment StoreEntitySet="favorites_for_unemployed">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="unemployed_id" ColumnName="unemployed_id" />
+          <ScalarProperty Name="vacancy_id" ColumnName="vacancy_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inolanguages">
+      <EntityTypeMapping TypeName="findjobModel.inolanguage">
+        <MappingFragment StoreEntitySet="inolanguages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lvl" ColumnName="lvl" />
+          <ScalarProperty Name="rezume_id" ColumnName="rezume_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="messages">
+      <EntityTypeMapping TypeName="findjobModel.message">
+        <MappingFragment StoreEntitySet="message">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="message1" ColumnName="message" />
+          <ScalarProperty Name="time_of_send" ColumnName="time_of_send" />
+          <ScalarProperty Name="sender_name" ColumnName="sender_name" />
+          <ScalarProperty Name="channel_id" ColumnName="channel_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rezumes">
+      <EntityTypeMapping TypeName="findjobModel.rezume">
+        <MappingFragment StoreEntitySet="rezume">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="citizenship" ColumnName="citizenship" />
+          <ScalarProperty Name="experience_job" ColumnName="experience_job" />
+          <ScalarProperty Name="WhyNot" ColumnName="WhyNot" />
+          <ScalarProperty Name="career_objective" ColumnName="career_objective" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="education_lvl" ColumnName="education_lvl" />
+          <ScalarProperty Name="native_language" ColumnName="native_language" />
+          <ScalarProperty Name="about_myself" ColumnName="about_myself" />
+          <ScalarProperty Name="moving" ColumnName="moving" />
+          <ScalarProperty Name="busyness" ColumnName="busyness" />
+          <ScalarProperty Name="schedule" ColumnName="schedule" />
+          <ScalarProperty Name="is_have_car" ColumnName="is_have_car" />
+          <ScalarProperty Name="category_of_rights" ColumnName="category_of_rights" />
+          <ScalarProperty Name="datetime_of_public" ColumnName="datetime_of_public" />
+          <ScalarProperty Name="unemployed_id" ColumnName="unemployed_id" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="unemployeds">
+      <EntityTypeMapping TypeName="findjobModel.unemployed">
+        <MappingFragment StoreEntitySet="unemployed">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="age" ColumnName="age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vacancies">
+      <EntityTypeMapping TypeName="findjobModel.vacancy">
+        <MappingFragment StoreEntitySet="vacancy">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="type_of_employment" ColumnName="type_of_employment" />
+          <ScalarProperty Name="schedule" ColumnName="schedule" />
+          <ScalarProperty Name="public_time" ColumnName="public_time" />
+          <ScalarProperty Name="employer_id" ColumnName="employer_id" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="from_or_to" ColumnName="from_or_to" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

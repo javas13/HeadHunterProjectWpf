@@ -1,0 +1,206 @@
+﻿<Page x:Class="WpfApp3.mainPageForRabotaGiver"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp3"
+      xmlns:materials="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1300"
+      Title="mainPageForRabotaGiver">
+
+    <Page.Resources>
+        <Style x:Key="buttonstyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="mybord" BorderThickness="0" Background="White">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="mybord" Value="#FFECECEC">
+
+                                </Setter>
+                                <Setter Property="Cursor" Value="Hand"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="mybord" Value="#FFD6D6D6"></Setter>
+
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+        <Style x:Key="buttonstyle2" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="mybord" BorderThickness="0" Background="Pink">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="mybord" Value="gray">
+
+                                </Setter>
+                                <Setter Property="Cursor" Value="Hand"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="mybord" Value="#FF5D5D5D"></Setter>
+
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+        <Style x:Key="buttonstyle1" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="mybord" BorderThickness="0" Background="#FF5865F1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="mybord" Value="#FF4859FF">
+
+                                </Setter>
+                                <Setter Property="Cursor" Value="Hand"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="mybord" Value="#FF0016FF"></Setter>
+
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+    </Page.Resources>
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" ></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+
+        <Grid>
+            <StackPanel Orientation="Horizontal" Background="Pink" >
+
+                <Button  Name="loginbutton"   Width="47" Height="47" Margin="5,0,0,0"  FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" FontSize="24" Foreground="White" Style="{StaticResource buttonstyle}" Click="loginbutton_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="50"/>
+
+
+                        </Style>
+
+
+                    </Button.Resources>
+                    <StackPanel>
+                        <Ellipse Fill="Black" Height="20" Width="21" Margin="0,0,0,1"></Ellipse>
+                        <Rectangle  Fill="Black" Height="10" Width="33" RadiusX="100" RadiusY="100"></Rectangle>
+                    </StackPanel>
+                </Button>
+                <TextBlock x:Name="logintxtonpage" Text="Elias" HorizontalAlignment="Center" Margin="5,0,5,0" VerticalAlignment="Center" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" FontSize="16"></TextBlock>
+                <Button Background="DarkSeaGreen" Style="{StaticResource buttonstyle2}" Height="30" Width="35" BorderBrush="DarkSeaGreen" Click="Button_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+
+
+                        </Style>
+
+
+                    </Button.Resources>
+                    <materials:PackIcon Kind="message" Foreground="White" Width="25" Height="25"></materials:PackIcon>
+                </Button>
+                <Button  Name="loginbutton12"  Width="243" Height="44" Content="Создать вакансию +" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" FontSize="24" Margin="6,3,0,3" Foreground="White" Style="{StaticResource buttonstyle1}" Click="loginbutton12_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+
+
+                        </Style>
+
+
+                    </Button.Resources>
+
+                </Button>
+                <Button  Name="loginbutton122"   Width="264" Height="44" Content="Посмотреть резюме" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" FontSize="24" Foreground="White" Style="{StaticResource buttonstyle1}" Margin="15,0,0,0" Click="loginbutton122_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+
+
+                        </Style>
+
+
+                    </Button.Resources>
+
+                </Button>
+                <Button  Name="loginbutton12в2"   Width="170" Height="44" Content="Мои вакансии" FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" FontSize="24" Foreground="White" Style="{StaticResource buttonstyle1}" Margin="15,0,0,0" Click="loginbutton12в2_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+
+
+                        </Style>
+
+
+                    </Button.Resources>
+
+                </Button>
+                <Button  Name="loginbutton1в2в2"   Width="50" Height="44"  FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" FontSize="24" Foreground="White" Style="{StaticResource buttonstyle1}" Margin="15,0,0,0" Click="loginbutton1в2в2_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+
+
+                        </Style>
+
+
+                    </Button.Resources>
+                    <materials:PackIcon Kind="Favorite" Foreground="White" Width="25" Height="25"></materials:PackIcon>
+                </Button>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button  Name="loginbutton1"  Width="100" Height="44" Content="Выйти" Margin="0,0,8,0"  FontFamily="/WpfApp3;component/Fonts/#Roboto Medium" FontSize="24" Foreground="White" Style="{StaticResource buttonstyle1}" Click="loginbutton1_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+
+
+                        </Style>
+
+
+                    </Button.Resources>
+
+                </Button>
+            </StackPanel>
+
+        </Grid>
+
+        <Frame x:Name="framecontent" Grid.Row="1">
+
+        </Frame>
+    </Grid>
+</Page>
+
+
